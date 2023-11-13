@@ -1,15 +1,19 @@
-import { useState } from 'react'
-import './App.css'
-import CartMascotas from './components/cartMascotas/cartMascotas'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <CartMascotas name="Charlie" edad="5" raza="caniche" price= {20000} />
-    </>
+    <div className='App'>
+    <BrowserRouter>
+        <Header/>
+        <Routes>
+          <Route path='/' element={<ItemListContainer greeting='Catalogo'/> }/>
+          <Route path='/category/:categoryId' element={ <ItemListContainer greeting="catalogo"/> } />
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 
